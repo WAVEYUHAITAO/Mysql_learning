@@ -1,0 +1,12 @@
+关系型数据库(SQL)
+MySQL , Oracle ,Sql Server, DB2 ,SQlite
+通过表和表之间，行和列之间的关系进行数据的存储
+
+非关系型数据库：(NoSQL) Not Only
+Redis， MongDB
+非关系型数据可，对象存储，通过对象的自身的属性来决定
+
+
+DBMS 数据库管理软件 
+科学有效的管理我们的数据 维护和获取数据
+MySQL 属于数据库管理系统

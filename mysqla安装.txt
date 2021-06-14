@@ -1,0 +1,49 @@
+1. 官网下载zip压缩包
+2.解压到自己的environment目录下
+3.配置环境变量为mysql的bin目录
+4.在mysql文件夹下新建配置文件 my.ini, 配置如下
+[client]
+# 设置mysql客户端默认字符集
+default-character-set=utf8
+ 
+[mysqld]
+# 设置3306端口
+port = 3306
+# 设置mysql的安装目录
+basedir=F:\Environment\mysql-8.0.25
+# 设置 mysql数据库的数据的存放目录，MySQL 8+ 不需要以下配置，系统自己生成即可，否则有可能报错
+# datadir=C:\\web\\sqldata
+# 允许最大连接数
+max_connections=20
+# 服务端使用的字符集默认为8比特编码的latin1字符集
+character-set-server=utf8
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+#skip-grant-tables
+
+5.以管理员模式启动cmd 进入到bin目录
+6.安装mysql的服务  mysqld -install
+7.初始化数据库文件 mysqld --initialize-insecure --user=mysql   等待一会儿会生成data文件
+8.启动mysql ,进去修改密码  net start mysql/net stop mysql
+9.进入mysql 通过命令行 mysql -u root -p这后面没空格，这里密码先放空
+10.版本5.7进入界面后更改root密码 update mysql.user set authentication_string=password('123456') where user='root' and Host='localhost';
+(最后输入flush privileges 刷新权限)
+11.版本8.0 修改密码
+use mysql;
+update user set authentication_string='' where user='root'
+ALTER user 'root'@'localhost' IDENTIFIED BY '新密码'
+
+show databases; --查看所有的数据库
+
+mysql>use school --切换数据库
+Database changed
+
+show tables; 查看数据库中所有的表
+describe student;查看数据库表结构
+select id，name,age from student;查看数据库表信息
+
+exit; --退出连接
+
+-- 单行注释
+/*
+多行注释 */
