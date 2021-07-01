@@ -1,0 +1,11 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "JDBC_TEST01/lib/mysql-connector-java-8.0.25.jar",
+        "JDBC_TEST01/lib/c3p0-0.9.5.5.jar",
+        "JDBC_TEST01/lib/commons-dbcp2-2.8.0.jar",
+        "JDBC_TEST01/lib/commons-logging-1.2.jar",
+        "JDBC_TEST01/lib/commons-pool2-2.10.0.jar",
+        "JDBC_TEST01/lib/mchange-commons-java-0.2.20.jar"
+    ]
+}

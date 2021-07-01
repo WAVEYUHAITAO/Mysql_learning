@@ -1,5 +1,6 @@
 package com.hito.lesson02.utils;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,6 +18,7 @@ public class JdbcUtils {
 
         try {
             InputStream in = JdbcUtils.class.getClassLoader().getResourceAsStream("db.properties");
+            InputStream in1 = new FileInputStream("F:/repositories/MySQL-learning/JDBC_TEST01/src/db.properties"); // 绝对路径读取配置文件
             Properties properties = new Properties();
             properties.load(in);
             driver = properties.getProperty("driver");

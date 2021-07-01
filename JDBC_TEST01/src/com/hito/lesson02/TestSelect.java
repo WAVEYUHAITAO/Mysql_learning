@@ -16,7 +16,7 @@ public class TestSelect {
         try {
             conn = JdbcUtils.getConnection();
             st = conn.createStatement();
-            String sql = "select * from users where id = 5";
+            String sql = "select * from users where id = 4";
             rs = st.executeQuery(sql);
             if (rs.next()) {
                 System.out.println(rs.getInt("id") + " " + rs.getString("NAME") + " " + rs.getString("PASSWORD") + " "
