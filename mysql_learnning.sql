@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS westworld #创建数据库
+`jdbc`CREATE DATABASE IF NOT EXISTS westworld #创建数据库
 DROP DATABASE IF EXISTS westworld #删除数据库
 #tab键上面，如果你的表名或者字段名是一个特殊字符，就需要带``
 USE `school`
@@ -956,3 +956,110 @@ INSERT INTO `users`(`id`,`NAME`,`PASSWORD`,`email`,`birthday`)
 VALUES(1,'zhangsan','123456','zs@sina.com','1980-12-04'),
 (2,'lisi','123456','lisi@sina.com','1981-12-04'),
 (3,'wangwu','123456','wangwu@sina.com','1979-12-04')
+
+
+
+CREATE TABLE users(
+	id INT PRIMARY KEY,
+	`name` VARCHAR(40),
+	`password` VARCHAR(40),
+	`email` VARCHAR(60),
+	`birthday` DATE
+
+
+);
+INSERT INTO users(id,`name`,`password`,`email`,birthday)
+VALUES(1,'张三','123456','ht@qq.com','2020-01-01');
+INSERT INTO users(id,`name`,`password`,`email`,birthday)
+VALUES(2,'李四','123456','ls@qq.com','2020-01-01');
+INSERT INTO users(id,`name`,`password`,`email`,birthday)
+VALUES(3,'王五','123456','wz@qq.com','2020-01-01');
+
+
+CREATE TABLE account(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(40),
+	money FLOAT
+
+);
+INSERT INTO account(`name`,money)VALUES('A',1000);
+INSERT INTO account(`name`,money)VALUES('B',1000);
+INSERT INTO account(`name`,money)VALUES('C',1000);
+
+#SMBMS项目
+CREATE DATABASE smbms CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE smbms;
+CREATE TABLE `smbms_user` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `userCode` VARCHAR(15) DEFAULT NULL COMMENT '用户编码',
+  `userName` VARCHAR(15) DEFAULT NULL COMMENT '用户名字',
+  `userPassword` VARCHAR(20) DEFAULT NULL COMMENT '用户密码',
+  `gender` INT(10) DEFAULT NULL COMMENT '性别',
+  `birthday` DATE DEFAULT NULL COMMENT '出生日期',
+  `phone` VARCHAR(20) DEFAULT NULL COMMENT '电话',
+  `address` VARCHAR(30) DEFAULT NULL COMMENT '地址',
+  `userRole` BIGINT(20) DEFAULT NULL COMMENT '用户角色',
+  `createdBy` BIGINT(20) DEFAULT NULL COMMENT '创建者',
+  `creationDate` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `modifyBy` BIGINT(20) DEFAULT NULL COMMENT '更新者',
+  `modifyDate` DATETIME DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `smbms_role` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `roleCode` VARCHAR(30) DEFAULT NULL COMMENT '角色编码',
+  `roleName` VARCHAR(15) DEFAULT NULL COMMENT '角色名称',
+  `createdBy` BIGINT(20) DEFAULT NULL COMMENT '创建者',
+  `creationDate` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `modifyBy` BIGINT(20) DEFAULT NULL COMMENT '更新者',
+  `modifyDate` DATETIME DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `smbms_provider` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `proCode` VARCHAR(15) DEFAULT NULL COMMENT '供应商编码',
+  `proName` VARCHAR(15) DEFAULT NULL COMMENT '供应商名称',
+  `proDesc` VARCHAR(50) DEFAULT NULL COMMENT '供应商描述',
+  `proContact` VARCHAR(15) DEFAULT NULL COMMENT '供应商联系人',
+  `proPhone` VARCHAR(20) DEFAULT NULL COMMENT '供应商电话',
+  `proAddress` VARCHAR(30) DEFAULT NULL COMMENT '供应商地址',
+  `proFax` VARCHAR(20) DEFAULT NULL COMMENT '供应商传真',
+  `createdBy` BIGINT(20) DEFAULT NULL COMMENT '创建者',
+  `creationDate` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `modifyBy` BIGINT(20) DEFAULT NULL COMMENT '更新者',
+  `modifyDate` DATETIME DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `smbms_bill` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `billCode` VARCHAR(30) DEFAULT NULL COMMENT '账单编码',
+  `productName` VARCHAR(20) DEFAULT NULL COMMENT '商品名称',
+  `productDesc` VARCHAR(50) DEFAULT NULL COMMENT '商品描述',
+  `productUnit` VARCHAR(60) DEFAULT NULL COMMENT '商品数量',
+  `productCount` DECIMAL(20,2) DEFAULT NULL COMMENT '总金额',
+  `totalPrice` DECIMAL(20,2) DEFAULT NULL COMMENT '是否支付',
+  `isPayment` INT(10) DEFAULT NULL COMMENT '供应商ID',
+  `createdBy` BIGINT(20) DEFAULT NULL COMMENT '创建者',
+  `creationDate` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `modifyBy` BIGINT(20) DEFAULT NULL COMMENT '更新者',
+  `modifyDate` DATETIME DEFAULT NULL COMMENT '更新时间',
+  `prividerId` INT(10) DEFAULT NULL COMMENT '供应商ID',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `smbms_address` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `contact` VARCHAR(15) DEFAULT NULL COMMENT '联系人姓名',
+  `addressDesc` VARCHAR(50) DEFAULT NULL COMMENT '收货地址',
+  `postCode` VARCHAR(15) DEFAULT NULL COMMENT '邮编',
+  `tel` INT(20) DEFAULT NULL COMMENT '联系人电话',
+  `createdBy` VARCHAR(20) DEFAULT NULL COMMENT '创建者',
+  `creationDate` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `modifyBy` BIGINT(20) DEFAULT NULL COMMENT '修改者',
+  `modifyDate` DATETIME DEFAULT NULL COMMENT '修改时间',
+  `userId` BIGINT(20) DEFAULT NULL COMMENT '用户ID',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
