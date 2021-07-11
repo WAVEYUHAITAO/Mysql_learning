@@ -1,4 +1,4 @@
-`jdbc`CREATE DATABASE IF NOT EXISTS westworld #创建数据库
+`smbms``jdbc`CREATE DATABASE IF NOT EXISTS westworld #创建数据库
 DROP DATABASE IF EXISTS westworld #删除数据库
 #tab键上面，如果你的表名或者字段名是一个特殊字符，就需要带``
 USE `school`
