@@ -16,7 +16,7 @@ CREATE TABLE `student` (
   `pwd` VARCHAR(20) NOT NULL DEFAULT '123456' COMMENT '密码',
   `sex` VARCHAR(2) NOT NULL DEFAULT '女' COMMENT '性别',
   `birthday` DATETIME DEFAULT NULL COMMENT '出生日期',
-  `gradeid` INT(10) NOT NULL COMMENT'学生的年级',
+  `gradeid` INT(10) NOT NULL COMMENT'学生的年级',`smbms`
   `address` VARCHAR(100) DEFAULT NULL COMMENT '家庭住址',
   `email` VARCHAR(50) DEFAULT NULL COMMENT '邮箱',
   PRIMARY KEY (`id`)
@@ -1063,3 +1063,54 @@ CREATE TABLE `smbms_address` (
   `userId` BIGINT(20) DEFAULT NULL COMMENT '用户ID',
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+
+
+CREATE DATABASE `mybatis`;
+
+USE `mybatis`;
+
+CREATE TABLE `user`(
+`id` INT(20) NOT NULL,
+`name` VARCHAR(30) DEFAULT NULL,
+`pwd` VARCHAR(30) DEFAULT NULL,
+PRIMARY KEY(`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `user`(`id`,`name`,`pwd`) VALUES
+(1,'海涛','123456'),
+(2,'张三','223456'),
+(3,'刘蔓','323456');
+
+CREATE TABLE `teacher` (
+  `id` INT(10) NOT NULL,
+  `name` VARCHAR(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+INSERT INTO teacher(`id`, `name`) VALUES (1, '秦老师'); 
+
+CREATE TABLE `student` (
+  `id` INT(10) NOT NULL,
+  `name` VARCHAR(30) DEFAULT NULL,
+  `tid` INT(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fktid` (`tid`),
+  CONSTRAINT `fktid` FOREIGN KEY (`tid`) REFERENCES `teacher` (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (1, '小明', 1); 
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (2, '小红', 1); 
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (3, '小张', 1); 
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (4, '小李', 1); 
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (5, '小王', 1);
+
+
+CREATE TABLE `blog`(
+`id` VARCHAR(50) NOT NULL COMMENT '博客id',
+`title` VARCHAR(100) NOT NULL COMMENT '博客标题',
+`author` VARCHAR(30) NOT NULL COMMENT '博客作者',
+`create_time` DATETIME NOT NULL COMMENT '创建时间',
+`views` INT(30) NOT NULL COMMENT '浏览量'
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
